@@ -174,22 +174,6 @@ const CreateAccountForm = ({
                         <Button className="form-centered-button">Sign Up</Button>
                     </FormGroup>
                 </Form>
-                {/* {props.hacks.map ( hack => {
-                    return (
-                        <HomeHacksCard
-                            key={hack.userId}
-                            title={hack.title}
-                            description={hack.description}
-                            firstName={hack.firstName}
-                            lastName={hack.lastName}
-                            id={hack.id}
-                            upVote={hack.upVote}
-                            downVote={hack.downVote}
-                            img_url={hack.img_url}
-                        />
-                    )
-                })} */}
-
             </Card>
         </Container>
     )
