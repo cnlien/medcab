@@ -1,0 +1,53 @@
+@import './imports.scss';
+
+.form-page {
+   background-color: $foamBlue;
+   min-height: 100vh;
+   padding-top: 50px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+
+    .form-card {
+        padding: 2em;
+        min-width: 420px;
+        box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.35);
+
+        .form-logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-checkbox, p {
+            font-size: .8rem;
+            line-height: 1.5rem;
+        }
+
+        .form-footerLink {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .form-button-container {
+            display: flex;
+            justify-content: center;
+
+            .form-centered-button {
+                width: 190px;
+                margin: 0 auto;
+                background-color: $tealBlue;
+                border: none;
+                &:hover {
+                    background-color: $tealBlueHover;
+                }
+            }
+        }
+
+        .form-links {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

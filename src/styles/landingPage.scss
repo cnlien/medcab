@@ -1,0 +1,34 @@
+@import './imports.scss';
+
+.landingPage {
+    // padding: 0;
+    // margin: 15px;
+    
+    .landingPage-header {
+        height: 63px;
+        background-color: $tealBlue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row nowrap;
+    
+        h2 {
+            color: white;
+            font-family: Roboto;
+            font-size: 24px;
+            margin-right: 10px;
+            padding-top:10px;
+        }
+    }
+
+    .landingPage-main {
+
+        .landingPage-image-container {
+            width: 50%;
+
+            .landingPage-image {
+               width: 100%;
+            }
+        }
+    }
+}   
