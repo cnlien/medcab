@@ -73,7 +73,7 @@ const LoginForm = () => {
                             name="username"
                             className="form-input"
                             placeholder="example@example.com"
-                            value={login.useraname}
+                            value={ login.username }
                             onChange={ handleChanges}
                             required
                         />
