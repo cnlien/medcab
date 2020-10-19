@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
 
 // COMPONENTS
 import {
     Row,
     Col,
-    Container
+    Container,
+    Form,
+    Input,
+    Button
 } from 'reactstrap';
 
 // IMAGES
@@ -19,18 +22,31 @@ import mainImage from '../images/main-image.jpg'
 import '../styles/landingPage.scss';
 
 const LandingPage = () => {
-    const [indica, setIndica] = useState([]);
+    
+    const [keyword, setKeyword] = useState({keyword: ''})
+    const [searchData, setSearchData] = useState([])
+    console.log(keyword.keyword)
+    console.log(searchData)
 
-    useEffect(() => {
-        axios
-            .get('https://med-cab-bw.herokuapp.com/api/strains/indica')
-            .then((res) => {
-                setIndica(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            });
-    }, []);
+    const handleKeywordChange = (e) => {
+        setKeyword({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+            axios.get(`https://med-cab-bw.herokuapp.com/api/strains/strain/${keyword.keyword}`)
+                .then((res) => {
+                    console.log(res.data)
+                    setSearchData(res.data)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+    }
+
+   
 
     return(
         <Container fluid className="landingPage">
@@ -43,13 +59,21 @@ const LandingPage = () => {
 
             <Row className="landingPage-main">
                 <Col className="landingPage-image-container">
-                    <img src={mainImage} alt="main disepesory image" className="landingPage-image" />
+                    <img src={mainImage} alt="main disepesory" className="landingPage-image" />
                 </Col>
 
                 <Col className="landingPage-find">
                     <div>
 
                     <h1>Find the strain that you need</h1>
+                    <Form inline onSubmit={ handleSubmit }>
+                        <Input 
+                            type="text"
+                            name="keyword"
+                            onChange={ handleKeywordChange }
+                        />
+                        <Button>Search</Button>
+                    </Form>
                     </div>
                 </Col>
             </Row>
