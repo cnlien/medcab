@@ -13,7 +13,7 @@ export const searchStrain = (keyword) => dispatch => {
     axios
         .get(`https://med-cab-bw.herokuapp.com/api/strains/strain/${keyword.keyword}`, keyword)
         .then((res) => {
-            console.log("res.data from SEARCH_STRINS_SUCCESS:", res.data)
+            console.log("res from SEARCH_STRINS_SUCCESS:", res)
             dispatch({
                 type: SEARCH_STRAIN_SUCCESS,
                 payload: res.data

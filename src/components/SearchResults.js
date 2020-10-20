@@ -34,7 +34,6 @@ const SearchResults = (props) => {
                     </div>
                 </Container>
             )}
-            
         </Container>
     )
 }
