@@ -1,0 +1,14 @@
+.search-results {
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: space-evenly;
+
+    .search-result-card {
+        width: 100%;
+        padding: 20px;
+        margin: 5px 10px;
+    }
+}

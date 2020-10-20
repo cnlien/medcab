@@ -1,0 +1,38 @@
+@import './imports.scss';
+
+header {
+    .carousel-item {
+
+        display: flex;
+        justify-content:center;
+        font-family: 'Roboto', sans-serif;
+
+        .carousel-image {
+            margin: 0 auto;
+        }
+
+        .carousel-caption {
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            text-align: left;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.2);
+
+            .carousel-caption-inner {
+                display: flex;
+                flex-flow: column;
+                width: 50%;
+                margin: 10%;
+                
+                button {
+                    max-width: 150px;
+                    background-color: $tealBlue;
+                    border: none;
+                }
+            }
+
+        }
+    }
+}

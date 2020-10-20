@@ -1,0 +1,80 @@
+@import './imports.scss';
+
+.main-navigation {
+    width: 100%;
+    font-family: Roboto;
+
+    .navigation-items {
+        display: flex;
+        flex-shrink: 1;
+        justify-content: space-between;
+
+        button {
+            background-color: $tealBlue;
+            margin-left: 10px;
+            border: none;
+            font-size: 16px;
+            height: 36px;
+            padding: 0 20px;
+        }
+
+        .search-container {
+            margin-left: 1%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .search-form{
+                margin-right: 20px;
+
+                .search-input {
+                    height: 36px;
+                    font-size: 16px;
+
+                }
+    
+                .search-button {
+                    background-color: $logoBlue;
+                    margin-left: 0;
+                }
+            }
+
+            .navLink {
+                margin-right: 10px;
+                color: $tealBlue;
+                font-size: 14px;
+            }
+        }
+        
+        .user-links-container {
+            display: flex;
+            justify-content: flex-end;
+
+            .search-links{
+                display: flex;
+                margin-right: 40px;
+                
+                .search-link {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            .user-links {
+                display: flex;
+    
+                .navLink {
+                    display: flex;
+                    justify-content:center;
+                    align-items: center;
+                    color: $tealBlue;
+                    font-weight: bold;
+                    font-size: 14px;
+                    margin-left: 10px;
+                }
+            }
+        }
+
+    }
+}

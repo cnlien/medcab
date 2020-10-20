@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios'
-import { useHistory  } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 // IMAGES
 import headerLogo from '../images/mc-logo.svg';
+import { Search } from 'react-bootstrap-icons'
 
 // REDUX
 import { connect } from 'react-redux'
@@ -18,18 +18,14 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
   Form,
   Input,
-  Button
+  Button,
+  InputGroup, InputGroupAddon, InputGroupText
 } from 'reactstrap';
+
+// STYLES
+import '../styles/navigation.scss';
 
 const Navigation = ({
     values,
@@ -44,73 +40,60 @@ const Navigation = ({
         searchStrain(values);
         history.push('/search-results')
     }
-    //   const [keyword, setKeyword] = useState({keyword: ''})
-    //   const [searchData, setSearchData] = useState([])
-    //   const handleKeywordChange = (e) => {
-    //       setKeyword({
-    //           [e.target.name]: e.target.value
-    //       })
-    //   }
-
-    //   const handleSubmit = (e) => {
-    //       e.preventDefault();
-    //           axios.get(`https://med-cab-bw.herokuapp.com/api/strains/strain/${keyword.keyword}`)
-    //               .then((res) => {
-    //                     console.log(res.data)
-    //                     setSearchData(res.data)
-    //                     history.push('/search-results')
-    //               })
-    //               .catch((err) => {
-    //                   console.log(err)
-    //               })
-    //   }
 
     let history = useHistory();
     const toggle = () => setIsOpen(!isOpen);
 
     return (
         <div>
-            <Navbar color="light" light expand="md">
+            <Navbar color="light" light expand="sm">
             <NavbarBrand href="/">
                 <img src={ headerLogo } />
             </NavbarBrand>
+
             <NavbarToggler onClick={toggle} />
+
             <Collapse isOpen={isOpen} navbar>
-                <Nav className="mr-auto" navbar>
-                <NavItem>
-                    <Form inline onSubmit={ handleSearch }>
-                        <Input 
-                            type="text"
-                            name="keyword"
-                            placeholder="Search Strains"
-                            value={ values.keyword }
-                            onChange = { onKeywordChange }
-                        />
-                        <Button>Search</Button>
-                    </Form>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                </NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                    Options
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                    <DropdownItem>
-                        Option 1
-                    </DropdownItem>
-                    <DropdownItem>
-                        Option 2
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>
-                        Reset
-                    </DropdownItem>
-                    </DropdownMenu>
-                </UncontrolledDropdown>
-                </Nav>
-                <NavbarText>Simple Text</NavbarText>
+                <nav className="mr-auto main-navigation" navbar>
+                    <div className="navigation-items">
+                        <div className='search-container'>
+                            <Form
+                                className="search-form"
+                                inline
+                                onSubmit={ handleSearch }
+                            >  
+                                <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                    <InputGroupText><Search /></InputGroupText>
+                                </InputGroupAddon>
+                                    <Input 
+                                        type="text"
+                                        name="keyword"
+                                        placeholder="Search Strains"
+                                        className="search-input"
+                                        value={ values.keyword }
+                                        onChange = { onKeywordChange }
+                                    />
+                                    <InputGroupAddon addonType="append">
+                                        <Button className="search-button">
+                                            Search
+                                        </Button>
+
+                                    </InputGroupAddon>
+                                </InputGroup>
+                            </Form>
+                            <Link className="navLink" to="/">Strains</Link>
+                            <Link className="navLink" to="/">Dispensaries</Link>
+
+                        </div>
+                        <div className='user-links-container'>
+                            <div className="user-links">
+                                <Link className="navLink login" to='/login'>Sign In</Link>
+                                <Link className="navLink createAccount" to='/create-account'><Button>Sign Up</Button></Link>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
             </Collapse>
             </Navbar>
         </div>
