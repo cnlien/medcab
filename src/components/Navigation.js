@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
 // IMAGES
@@ -21,7 +21,9 @@ import {
   Form,
   Input,
   Button,
-  InputGroup, InputGroupAddon, InputGroupText
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText
 } from 'reactstrap';
 
 // STYLES
@@ -32,7 +34,9 @@ const Navigation = ({
     onKeywordChange,
     searchStrain
 }) => {
+
     const [isOpen, setIsOpen] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -40,13 +44,26 @@ const Navigation = ({
         searchStrain(values);
         history.push('/search-results')
     }
+    useEffect(()=>{
+        if (localStorage.getItem('token')) {
+          setLoggedIn(true);
+        }
+      }, []);
+    
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        localStorage.removeItem('userLocation')
+        localStorage.removeItem('userState')
+        setLoggedIn(false);
+    }
 
     let history = useHistory();
     const toggle = () => setIsOpen(!isOpen);
 
     return (
         <div>
-            <Navbar color="light" light expand="sm">
+            <Navbar color="light" light expand="md">
             <NavbarBrand href="/">
                 <img src={ headerLogo } />
             </NavbarBrand>
@@ -87,10 +104,42 @@ const Navigation = ({
 
                         </div>
                         <div className='user-links-container'>
-                            <div className="user-links">
-                                <Link className="navLink login" to='/login'>Sign In</Link>
-                                <Link className="navLink createAccount" to='/create-account'><Button>Sign Up</Button></Link>
-                            </div>
+                            {loggedIn
+                                ?
+                                <div className="user-links">
+                                    <Link className="navLink signout" to='/login'><Button onClick={ handleLogout }>Sign Out</Button></Link>
+                                </div>
+                                :
+                                <div className="user-links">
+                                    <Link className="navLink login" to='/login'><Button>Sign In</Button></Link>
+                                    <Link className="navLink createAccount" to='/create-account'><Button>Sign Up</Button></Link>
+                                 </div>
+                            }
+                        </div>
+                        <div className='hamburger-links-container'>
+                            {loggedIn
+                                ?
+                                <div className="hamburger-links">
+                                    <Link className="navLink signout" to='/login'>
+                                        <Button block onClick={ handleLogout }>
+                                            Sign Out
+                                        </Button>
+                                    </Link>
+                                </div>
+                                :
+                                <div className="hamburger-links">
+                                    <Link className="navLink login" to='/login'>
+                                        <Button block>
+                                        Sign In
+                                        </Button>
+                                    </Link>
+                                    <Link className="navLink createAccount" to='/create-account'>
+                                        <Button block>
+                                            Sign Up
+                                        </Button>
+                                    </Link>
+                                 </div>
+                            }
                         </div>
                     </div>
                 </nav>
