@@ -66,7 +66,7 @@ const Navigation = ({
         <div>
             <Navbar color="light" light expand="md">
             <NavbarBrand href="/">
-                <img src={ headerLogo } />
+                <img src={ headerLogo } alt="logo"/>
             </NavbarBrand>
 
             <NavbarToggler onClick={toggle} />

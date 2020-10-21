@@ -68,7 +68,7 @@ const StrainInformation = (props) => {
             })
         }
         fetchData();
-    }, []);
+    }, [props.match.params.id]);
 
     const strainId = parseInt(props.match.params.id)
     
@@ -105,9 +105,9 @@ const StrainInformation = (props) => {
                         
                         {/* STRAIN EFFECTS */}
                         {effectIsOpen ? (
-                            <h3 className="strain-information-title" onClick={toggleEffects}>Common Effects <img src={ChevronUp} /></h3>
+                            <h3 className="strain-information-title" onClick={toggleEffects}>Common Effects <img src={ChevronUp} alt="toggle-up" /></h3>
                         ) : (
-                            <h3 className="strain-information-title" onClick={toggleEffects}>Common Effects <img src={ChevronDown} /></h3>
+                            <h3 className="strain-information-title" onClick={toggleEffects}>Common Effects <img src={ChevronDown} alt="toggle-down" /></h3>
                         )}
                         <Collapse isOpen={effectIsOpen}>
                             <Row className="strain-effects">
@@ -140,9 +140,9 @@ const StrainInformation = (props) => {
                         
                         {/* STRAIN FLAVORS */}
                         {flavorIsOpen ? (
-                            <h3 className="strain-information-title" onClick={toggleFlavors}>Tastes &amp; Flavors <img src={ChevronUp} /></h3>
+                            <h3 className="strain-information-title" onClick={toggleFlavors}>Tastes &amp; Flavors <img src={ChevronUp} alt="toggle up"/></h3>
                         ) : (
-                            <h3 className="strain-information-title" onClick={toggleFlavors}>Tastes &amp; Flavors <img src={ChevronDown} /></h3>
+                            <h3 className="strain-information-title" onClick={toggleFlavors}>Tastes &amp; Flavors <img src={ChevronDown} alt="toggle down"/></h3>
                         )}
                         <Collapse isOpen={flavorIsOpen}>
                             <Row className="strain-flavors">

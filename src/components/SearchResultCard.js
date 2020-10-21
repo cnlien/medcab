@@ -8,7 +8,7 @@ const SearchResultCard = (props) => {
         <Card className="search-result-card" name={props.name}>
             <Row>
                 <Col sm="3">
-                    <img style={{width:"100%"}} src="https://via.placeholder.com/300x300" />
+                    <img style={{width:"100%"}} src="https://via.placeholder.com/300x300" alt="strain"/>
                 </Col>
 
                 <Col>
