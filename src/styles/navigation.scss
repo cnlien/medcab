@@ -103,12 +103,12 @@
 
             @media (max-width: $hamburger) {
                 display: block;
-                margin-top: 10px;
             }
 
             button {
                 margin: 0;
                 margin-bottom: 5px;
+                font-size: .9rem;
             }
 
         }

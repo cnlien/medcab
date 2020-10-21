@@ -18,6 +18,7 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
+  DropdownItem,
   Form,
   Input,
   Button,
@@ -117,6 +118,7 @@ const Navigation = ({
                             }
                         </div>
                         <div className='hamburger-links-container'>
+                            <DropdownItem divider />
                             {loggedIn
                                 ?
                                 <div className="hamburger-links">
