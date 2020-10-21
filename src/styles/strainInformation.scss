@@ -1,0 +1,39 @@
+@import './imports.scss';
+
+.strain-information-container {
+    margin-top: 20px;
+    color: $tealBlue;
+}
+.strain-information {
+    font-size: 100%;
+
+    .strain-name {
+        font-size: 2rem;
+    }
+
+    .strain-information-title {
+        font-size: 1.1rem;
+        border-bottom: 1px solid $tealBlue;
+        padding-bottom: 5px;
+        cursor: pointer;
+    }
+
+    .strain-effects, .strain-flavors {
+        padding-bottom: 15px;
+
+        .strain-effects-title {
+            font-size: .9rem;
+        }
+
+        .strain-effect, .strain-flavor {
+            font-size: .8rem;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .strain-information-description {
+        font-size: .8rem;
+        color: black;
+    }
+}
